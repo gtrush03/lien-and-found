@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<!--
+  ARCHETYPE: document
+  BEST FOR: essays, manifestos, retreat bookings, monastery booking pages, books,
+            single-subject newsletters, restaurant menus, simple bookings.
+  REFERENCES: paulgraham.com, craigmod.com, monolithic letterpress booklets.
+  STRUCTURE: single column, type-driven, generous whitespace, footnoted.
+              one image (frontispiece), running heads, cite-heavy.
+  Renders beautifully without javascript or imagery.
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>Lien & Found — A plain-English guide to storage auctions in NYC + SF.</title>
+  <meta name="description" content="A plain-English guide to storage auctions in NYC + SF.">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <meta property="og:title" content="Lien & Found">
+  <meta property="og:description" content="A plain-English guide to storage auctions in NYC + SF.">
+  <meta property="og:image" content="assets/hero.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="assets/hero.jpg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg0: #f3efe6;
+      --bg1: #faf8f4;
+      --bg2: #ffffff;
+      --ink0: #1a1a1a;
+      --ink1: #3b3a39;
+      --ink-mute: #7c7a76;
+      --line: #d2cfc7;
+      --line-strong: #b2afa9;
+      --accent: #d4541c;
+      --accent-soft: #e7b195;
+      --display: 'JetBrains Mono', 'GT America Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+      --body: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+      --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg0); color: var(--ink0);
+      font-family: var(--body);
+      font-size: clamp(17px, 0.4vw + 15px, 19px); line-height: 1.7;
+      -webkit-font-smoothing: antialiased; overflow-x: hidden;
+    }
+    .doc {
+      max-width: 640px; margin: 0 auto;
+      padding: clamp(48px, 10vw, 120px) clamp(20px, 5vw, 32px) clamp(64px, 12vw, 160px);
+    }
+
+    .running-head {
+      display: flex; justify-content: space-between; align-items: baseline;
+      padding-bottom: clamp(48px, 8vw, 96px);
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--ink-mute);
+    }
+    .running-head a { color: var(--ink-mute); text-decoration: none; }
+    .running-head a:hover { color: var(--accent); }
+
+    .frontispiece {
+      margin: 0 -8px clamp(48px, 8vw, 80px); border-radius: 4px; overflow: hidden;
+      aspect-ratio: 3/2; background: var(--bg1);
+    }
+    .frontispiece img { width: 100%; height: 100%; object-fit: cover; filter: saturate(0.92); }
+
+    h1 {
+      font-family: var(--display); font-weight: 500;
+      font-size: clamp(36px, 5vw, 56px); line-height: 1.1; letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+    h1 em { font-style: italic; color: var(--accent); }
+    .lede {
+      font-family: var(--display); font-style: italic; font-weight: 400;
+      font-size: clamp(20px, 1.5vw + 14px, 26px); line-height: 1.4;
+      color: var(--ink1);
+      margin-bottom: clamp(32px, 6vw, 56px);
+      max-width: 38ch;
+    }
+    .byline {
+      font-family: var(--mono); font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--ink-mute);
+      padding-bottom: clamp(40px, 6vw, 64px);
+      border-bottom: 1px solid var(--line);
+      margin-bottom: clamp(40px, 6vw, 64px);
+    }
+
+    .doc h2 {
+      font-family: var(--display); font-weight: 500;
+      font-size: clamp(26px, 3vw, 34px); line-height: 1.2; letter-spacing: -0.015em;
+      margin: clamp(48px, 8vw, 80px) 0 16px;
+      counter-increment: section;
+    }
+    .doc h2::before {
+      content: "§ " counter(section, decimal-leading-zero) "  ";
+      font-family: var(--mono); font-size: 0.5em; color: var(--accent);
+      letter-spacing: 0.18em; text-transform: uppercase; vertical-align: 0.3em;
+    }
+    .doc { counter-reset: section; }
+
+    .doc p { margin-bottom: 1.2em; color: var(--ink1); }
+    .doc p:first-of-type::first-letter {
+      font-family: var(--display); font-weight: 500;
+      font-size: 4em; line-height: 0.85;
+      float: left; padding: 0.05em 0.12em 0 0;
+      color: var(--accent);
+    }
+    .doc strong { color: var(--ink0); font-weight: 600; }
+    .doc em { font-style: italic; color: var(--ink0); }
+    .doc a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+    .doc a:hover { color: var(--ink0); }
+
+    .doc blockquote {
+      font-family: var(--display); font-style: italic;
+      font-size: clamp(20px, 1vw + 16px, 24px); line-height: 1.4;
+      padding: 24px 0 24px 28px; margin: 32px 0;
+      border-left: 2px solid var(--accent);
+      color: var(--ink0);
+    }
+    .doc blockquote cite { display: block; margin-top: 12px; font-style: normal; font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-mute); }
+
+    .doc ul, .doc ol { margin: 16px 0 24px 24px; color: var(--ink1); }
+    .doc li { margin-bottom: 8px; }
+    .doc li::marker { color: var(--accent); font-family: var(--mono); }
+
+    .key-detail {
+      display: grid; grid-template-columns: max-content 1fr; gap: 12px 24px;
+      padding: 24px; margin: 40px 0;
+      border: 1px solid var(--line); border-radius: 6px; background: var(--bg1);
+      font-family: var(--mono); font-size: 13px;
+    }
+    .key-detail dt { color: var(--ink-mute); letter-spacing: 0.1em; text-transform: uppercase; font-size: 11px; }
+    .key-detail dd { color: var(--ink0); }
+
+    .booking {
+      padding: clamp(40px, 7vw, 64px) 0 0;
+      margin-top: clamp(48px, 8vw, 80px);
+      border-top: 1px solid var(--line);
+    }
+    .booking h3 {
+      font-family: var(--display); font-style: italic; font-weight: 500;
+      font-size: clamp(28px, 3vw, 36px); line-height: 1.15; letter-spacing: -0.015em;
+      margin-bottom: 24px;
+    }
+    .btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      min-height: 52px; padding: 0 26px;
+      background: var(--accent); color: var(--bg0);
+      font-family: var(--body); font-weight: 500; font-size: 15px;
+      border-radius: 4px; text-decoration: none; border: none; cursor: pointer;
+      transition: background .2s ease;
+    }
+    .btn:hover { background: color-mix(in srgb, var(--accent) 85%, white); }
+
+    .colophon {
+      margin-top: clamp(80px, 12vw, 140px); padding-top: clamp(40px, 6vw, 64px);
+      border-top: 1px solid var(--line);
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--ink-mute); text-align: center;
+      display: flex; flex-direction: column; gap: 12px;
+    }
+    .colophon a { color: var(--ink-mute); text-decoration: none; }
+    .colophon a:hover { color: var(--accent); }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .doc > * { opacity: 0; transform: translateY(8px); animation: settle 1.2s ease-out forwards; }
+      .doc > *:nth-child(1) { animation-delay: 0s; }
+      .doc > *:nth-child(2) { animation-delay: .15s; }
+      .doc > *:nth-child(3) { animation-delay: .3s; }
+      .doc > *:nth-child(n+4) { animation-delay: .45s; }
+      @keyframes settle { to { opacity: 1; transform: translateY(0); } }
+    }
+
+    
+/* ── Eyebrow ───────────────────────────────────────────────────────────── */
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  margin-bottom: 14px;
+}
+
+/* The document archetype auto-numbers h2 via counter. Disable that since
+   we're providing explicit eyebrows. */
+.doc h2::before { content: ""; }
+.doc h2 { margin-top: clamp(56px, 9vw, 96px); }
+
+.composed { padding-top: 0; }
+.composed + .composed { border-top: 1px solid var(--line); padding-top: clamp(56px, 9vw, 96px); }
+
+/* Inset image between sections */
+.section-photo {
+  margin: clamp(32px, 5vw, 56px) -8px;
+  border-radius: 4px;
+  overflow: hidden;
+  aspect-ratio: 3/2;
+  background: var(--bg1);
+}
+.section-photo.tall { aspect-ratio: 4/5; max-width: 420px; margin-left: auto; margin-right: auto; }
+.section-photo.square { aspect-ratio: 1/1; max-width: 420px; margin-left: auto; margin-right: auto; }
+.section-photo img { width: 100%; height: 100%; object-fit: cover; filter: saturate(0.92); display: block; }
+
+/* Drop-cap only on the very first paragraph of the doc, not every section */
+.doc .composed p:first-of-type::first-letter { font-size: inherit; float: none; padding: 0; color: inherit; font-family: inherit; font-weight: inherit; line-height: inherit; }
+.doc .composed-manifesto:first-of-type p:first-of-type::first-letter {
+  font-family: var(--display); font-weight: 500;
+  font-size: 4em; line-height: 0.85;
+  float: left; padding: 0.05em 0.14em 0 0;
+  color: var(--accent);
+}
+
+/* ── Three pillars ─────────────────────────────────────────────────────── */
+.pillars {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 32px;
+}
+.pillars article {
+  border-top: 2px solid var(--ink0);
+  padding-top: 16px;
+}
+.pillars h3 {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 18px;
+  letter-spacing: -0.01em;
+  margin-bottom: 8px;
+  color: var(--ink0);
+}
+.pillars p { font-size: 15px; line-height: 1.55; color: var(--ink1); }
+@media (max-width: 640px) {
+  .pillars { grid-template-columns: 1fr; gap: 16px; }
+}
+
+/* ── Directory list ────────────────────────────────────────────────────── */
+.dir { list-style: none; margin: 32px 0 0; padding: 0; }
+.dir li {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 6px;
+  padding: 20px 0;
+  border-top: 1px solid var(--line);
+  counter-increment: dir;
+  position: relative;
+}
+.dir li::before {
+  content: counter(dir, decimal-leading-zero);
+  position: absolute;
+  top: 22px;
+  right: 0;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-mute);
+  letter-spacing: 0.16em;
+}
+.dir { counter-reset: dir; }
+.dir li:last-child { border-bottom: 1px solid var(--line); }
+.dir .dir-name {
+  font-family: var(--display);
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  padding-right: 40px;
+}
+.dir .dir-name a {
+  color: var(--ink0);
+  text-decoration: none;
+  background-image: linear-gradient(to right, var(--accent), var(--accent));
+  background-size: 0% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size .25s ease, color .2s ease;
+  padding-bottom: 2px;
+}
+.dir .dir-name a:hover { color: var(--accent); background-size: 100% 1px; }
+.dir .dir-meta {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.dir .dir-note {
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--ink1);
+  max-width: 60ch;
+}
+
+/* ── Section accents (industrial/utilitarian) ─────────────────────────── */
+.doc h2 { letter-spacing: -0.02em; font-weight: 500; }
+.composed h2 em { font-style: italic; color: var(--accent); font-weight: 500; }
+
+/* ── Page background paper-grain ──────────────────────────────────────── */
+body::before {
+  content: "";
+  position: fixed; inset: 0; pointer-events: none; z-index: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='.6'/></svg>");
+  opacity: .05;
+  mix-blend-mode: multiply;
+}
+.doc { position: relative; z-index: 1; }
+
+/* ── Hairline rules between sections, industrial feel ─────────────────── */
+.composed { padding-bottom: clamp(56px, 9vw, 96px); }
+.composed:last-of-type { padding-bottom: clamp(32px, 5vw, 48px); }
+
+/* ── Booking / CTA tweak ──────────────────────────────────────────────── */
+.booking { background: var(--bg1); margin-left: -8px; margin-right: -8px; padding-left: 24px; padding-right: 24px; border-radius: 4px; padding-bottom: 32px; }
+.booking h3 em { color: var(--accent); }
+
+/* ── Key-detail (Buyer's playbook) ────────────────────────────────────── */
+.key-detail dt { font-weight: 600; color: var(--accent); }
+
+/* ── Print-mode for a downloadable feel ───────────────────────────────── */
+@media print {
+  body::before, .running-head a, footer { display: none; }
+  body { background: white; }
+}
+  </style>
+</head>
+<body>
+
+<article class="doc">
+
+  <header class="running-head">
+    <span>Lien & Found</span>
+    <a href="#directory">LIEN SALES · NYC + SF · UPDATED WEEKLY</a>
+  </header>
+
+  <div class="frontispiece"><img src="assets/hero.jpg" alt="long fluorescent-lit storage corridor with identical orange roll-up doors and one slightly ajar" loading="eager"></div>
+
+  <h1>When the rent stops, the locker <em>opens</em>.</h1>
+  <p class="lede">A plain-English guide to how abandoned storage units get auctioned — plus a working directory of where to bid, and what to do if it’s your stuff and you’d like it back before they sell it.</p>
+  <p class="byline">Lien & Found  ·  Issue №01  ·  May 2026  ·  2026-05-10</p>
+
+  <!-- 01 — The basics -->
+<section class="composed composed-manifesto" id="basics">
+  <div class="eyebrow">01 · The basics</div>
+  <h2>How a storage unit ends up on the auction block</h2>
+  <p>Miss enough rent and the facility puts a <strong>lien</strong> on your unit. After a legally-required notice window — usually 30 to 90 days depending on the state — they cut the lock, photograph the contents through the open door, and sell the whole unit to the highest bidder. Most of it happens online now. Some places still do the in-person, walk-up auctions you’ve seen on TV.</p>
+  <p>The industry runs on a handful of platforms. The facility uploads photos of the door rolled up. Bidders bid sight-unseen. Winner pays, hauls everything out within 24 to 72 hours, broom-sweeps the unit, and the cycle resets the next month.</p>
+  <p>New York and California both follow self-storage lien statutes (NY Lien Law §182 and California Business &amp; Professions Code §21700 et seq.) — the windows, the notice requirements, and the right to redeem before the gavel falls are written into law. Treat the dates on any notice you receive as load-bearing.</p>
+  <figure class="section-photo tall"><img src="assets/section-1.jpg" alt="cut padlock, lien notice envelope, keys, and clipboard arranged on weathered concrete" loading="lazy"></figure>
+</section>
+
+<!-- 02 — Three pillars -->
+<section class="composed composed-pillars" id="rules">
+  <div class="eyebrow">02 · Before you bid</div>
+  <h2>What you’re actually buying</h2>
+  <div class="pillars">
+    <article>
+      <h3>Sight-unseen</h3>
+      <p>Most platforms only show photos taken from the doorway. You can’t go inside until you win and pay. Bring a flashlight to the pickup.</p>
+    </article>
+    <article>
+      <h3>All-or-nothing</h3>
+      <p>You buy the entire unit, including the junk. Plan for dump fees. The math only works if you can flip enough of the contents.</p>
+    </article>
+    <article>
+      <h3>Clock starts at win</h3>
+      <p>Facilities typically give you 24–72 hours to remove everything. Miss the window and they keep your cleanout deposit — or worse, the unit.</p>
+    </article>
+  </div>
+  <figure class="section-photo"><img src="assets/section-2.jpg" alt="view from inside a half-open storage unit toward boxes and an old armchair" loading="lazy"></figure>
+</section>
+
+<!-- 03 — NYC -->
+<section class="composed composed-list" id="directory">
+  <div class="eyebrow">03 · New York City</div>
+  <h2>Where to find NYC storage auctions</h2>
+  <p>Manhattan, Brooklyn, Queens, Bronx, Staten Island. The five boroughs run through the same handful of platforms — most online, a few still on-site. Bookmark all of them; inventory rotates daily.</p>
+  <ol class="dir">
+    <li>
+      <div class="dir-name"><a href="https://www.storagetreasures.com/auctions/ny" target="_blank" rel="noopener">StorageTreasures — New York</a></div>
+      <div class="dir-meta">National aggregator · online bidding</div>
+      <div class="dir-note">The biggest directory in the country. Filter by ZIP, set saved searches, watchlist units before they go live. Most active NYC platform by volume.</div>
+    </li>
+    <li>
+      <div class="dir-name"><a href="https://www.cubesmart.com/storage-auctions/new-york-storage-auctions/" target="_blank" rel="noopener">CubeSmart Auctions — New York</a></div>
+      <div class="dir-meta">Operator-direct · scheduled on-site + online</div>
+      <div class="dir-note">CubeSmart’s own NY facilities. The page lists upcoming sale dates by location — useful if you want to bid in person.</div>
+    </li>
+    <li>
+      <div class="dir-name"><a href="https://www.lockerfox.com/storage-auctions/us/new-york/" target="_blank" rel="noopener">Lockerfox — New York</a></div>
+      <div class="dir-meta">Online-only · 100% remote bidding</div>
+      <div class="dir-note">Used by a long tail of independent NY facilities that don’t have their own auction page. Strong inventory in Queens and Brooklyn.</div>
+    </li>
+    <li>
+      <div class="dir-name"><a href="https://selfstorageauction.com/auctions/New%20York" target="_blank" rel="noopener">SelfStorageAuction.com — New York</a></div>
+      <div class="dir-meta">Aggregator · online + facility-listed</div>
+      <div class="dir-note">Free to register. Lists NY auctions with photos, sizes, and last-bid prices so you can calibrate before jumping in.</div>
+    </li>
+    <li>
+      <div class="dir-name"><a href="https://storageauctions.net/new-york-ny/" target="_blank" rel="noopener">StorageAuctions.net — New York</a></div>
+      <div class="dir-meta">Public-records aggregator · email alerts</div>
+      <div class="dir-note">Pulls scheduled sales from public lien notices across NY. Subscribe to ZIP-code alerts; useful for spotting on-site sales the bigger platforms miss.</div>
+    </li>
+  </ol>
+  <figure class="section-photo square"><img src="assets/section-3.jpg" alt="hand-written cardboard tag tied with twine to a metal locker latch" loading="lazy"></figure>
+</section>
+
+<!-- 04 — SF -->
+<section class="composed composed-list" id="sf">
+  <div class="eyebrow">04 · San Francisco Bay Area</div>
+  <h2>Where to find SF Bay Area storage auctions</h2>
+  <p>SF proper, Oakland, San Mateo, San Jose, Hayward. Bay Area lien sales mix national platforms with a couple of long-running regional auctioneers who still run live calendars.</p>
+  <ol class="dir">
+    <li>
+      <div class="dir-name"><a href="https://storageauctions.net/san-francisco-ca/" target="_blank" rel="noopener">StorageAuctions.net — San Francisco</a></div>
+      <div class="dir-meta">Public-records aggregator · email alerts</div>
+      <div class="dir-note">Best single page for an at-a-glance view of upcoming SF sales. Filter by city and subscribe to alerts before you go.</div>
+    </li>
+    <li>
+      <div class="dir-name"><a href="https://www.storagetreasures.com/auctions/ca" target="_blank" rel="noopener">StorageTreasures — California</a></div>
+      <div class="dir-meta">National aggregator · online bidding</div>
+      <div class="dir-note">Filter to the Bay. Security Public Storage and several SF-area operators run their online auctions through StorageTreasures.</div>
+    </li>
+    <li>
+      <div class="dir-name"><a href="https://salemakerauctions.com/calendar/" target="_blank" rel="noopener">Sale Maker Auctions</a></div>
+      <div class="dir-meta">Live on-site auctioneer · NorCal calendar</div>
+      <div class="dir-note">Old-school caravan auctions. Calendar includes Bay Area facilities like Army St Self Storage in SF and All American Self Storage in San Mateo. Show up early.</div>
+    </li>
+    <li>
+      <div class="dir-name"><a href="https://norcalstorageauctions.com/storage-auction-dates.htm" target="_blank" rel="noopener">Nor Cal Storage Auctions</a></div>
+      <div class="dir-meta">Regional auctioneer · on-site + online</div>
+      <div class="dir-note">Serves dozens of NorCal facilities. Schedule page lists dates, addresses, and the auctioneer on site. Bring cash.</div>
+    </li>
+    <li>
+      <div class="dir-name"><a href="https://www.lockerfox.com/storage-auctions/us/california/" target="_blank" rel="noopener">Lockerfox — California</a></div>
+      <div class="dir-meta">Online-only · 100% remote bidding</div>
+      <div class="dir-note">Used by independents that don’t want to deal with on-site logistics. Good Bay Area coverage; sortable by ZIP.</div>
+    </li>
+  </ol>
+</section>
+
+<!-- 05 — Settle before the gavel -->
+<section class="composed composed-manifesto" id="settle">
+  <div class="eyebrow">05 · The thing nobody tells you</div>
+  <h2>If it’s <em>your</em> stuff: settle before the gavel</h2>
+  <p>Almost every facility would rather get paid than run an auction. Auctions are a last resort — they cost the facility time, lien-service fees, and lost rent. Before they list your unit, <strong>call the manager</strong> and ask what number makes this go away.</p>
+  <p>You can often negotiate down to a fraction of what’s owed, especially if you commit to clearing the unit on a specific date. Bring cash or a card and a truck. Done.</p>
+  <p>If the unit is already scheduled for sale, ask whether you can still <em>redeem</em> it. Most state lien laws give you a window right up until bidding opens. Call. Don’t email. Don’t wait.</p>
+  <blockquote>
+    “Hi — I’m the tenant on unit ___. I see it’s on the auction list. I can be there tomorrow with payment if we can settle the balance. What’s your best number?”
+    <cite>The call that has worked, more than once.</cite>
+  </blockquote>
+  <figure class="section-photo"><img src="assets/detail.jpg" alt="bolt cutters mid-cut on a steel padlock with sparks" loading="lazy"></figure>
+</section>
+
+<!-- 06 — Buyer's playbook section heading; the key-detail dl renders below -->
+<section class="composed" id="playbook">
+  <div class="eyebrow">06 · Quick reference</div>
+  <h2>Buyer’s playbook</h2>
+  <p>The short version, for the back of your phone case before you drive to a sale.</p>
+</section>
+
+  <dl class="key-detail">
+    <dt>Bring</dt><dd>Cash · padlock · gloves · flashlight · tape measure · truck or van</dd><dt>Budget</dt><dd>Bid amount + sales tax + cleanout deposit (typically $50–$200, refundable)</dd><dt>Time</dt><dd>24–72 hours to empty the unit after winning</dd><dt>Avoid</dt><dd>Sealed boxes labeled in marker (usually the bait). Look at the back wall.</dd><dt>Flip</dt><dd>Furniture, tools, and electronics resell fastest. Clothes and paper are dead weight.</dd>
+  </dl>
+
+  <section class="booking">
+    <h3>More cities <em>coming.</em></h3>
+    <p style="margin-bottom:24px;">NYC and SF first. LA, Chicago, Houston, Miami, Atlanta, Philly, Seattle, Boston, Dallas, DC next. Listings sourced from StorageTreasures, CubeSmart, Lockerfox, SelfStorageAuction.com, StorageAuctions.net, Sale Maker, and Nor Cal Storage Auctions — availability changes daily, so always verify on the platform before bidding.</p>
+    <a href="#directory" class="btn">Browse NYC auctions</a>
+  </section>
+
+  <footer class="colophon">
+    <span>Made for @iqram · 2026-05-10</span>
+    <span>§  Set in Inter & JetBrains Mono  ·  No JS  ·  Verify every listing before you bid  §</span>
+  </footer>
+
+</article>
+
+<a href="https://jelly-claw.com" target="_blank" rel="noopener" style="position:fixed;bottom:14px;right:14px;display:inline-flex;align-items:center;gap:6px;padding:6px 12px 6px 8px;background:rgba(19,19,19,.8);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.08);border-radius:999px;color:#a8a39a;font:11px/1 Inter,sans-serif;letter-spacing:.16em;text-decoration:none;text-transform:uppercase;z-index:9999"><img src="/favicon.svg" width="20" height="20" alt=""><span>genie</span></a>
+
+</body>
+</html>
